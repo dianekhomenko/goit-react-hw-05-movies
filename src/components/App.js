@@ -1,5 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom';
-import { Home } from 'components/Home/Home'
+import { Home } from 'pages/Home'
+import {Movie} from 'pages/Movie'
 
 export const App = () => {
   return (
@@ -9,7 +10,8 @@ export const App = () => {
         <Link to="/movies">Movies</Link>
       </nav>
       <Routes>
-        <Route path="/goit-react-hw-05-movies" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/movies/:movieId" element={<Movie />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </div>
