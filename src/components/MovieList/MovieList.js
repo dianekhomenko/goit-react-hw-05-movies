@@ -4,14 +4,14 @@ import { useState, useEffect } from 'react';
 import { MovieListItem } from 'components/MovieListItem/MovieListItem';
 import { Link } from 'react-router-dom';
 
-axios.defaults.baseURL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
+axios.defaults.baseURL = `https://api.themoviedb.org/3/`;
 
 export const MovieList = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     async function getData() {
-      const response = await axios.get();
+      const response = await axios.get(`trending/movie/day?api_key=${API_KEY}`);
       setMovies(response.data.results);
     }
     getData();
