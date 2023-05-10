@@ -3,10 +3,12 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { MovieListItem } from 'components/MovieListItem/MovieListItem';
 import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 export const MovieSearch = () => {
   const [movies, setMovies] = useState([]);
-  const [search, setSearch] = useState('');
+    const [search, setSearch] = useState('');
+    const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     async function getData() {
@@ -17,10 +19,16 @@ export const MovieSearch = () => {
     }
     getData();
   }, [search]);
+    
+    const updateQueryString = query => {
+      const nextParams = query !== '' ? { query } : {};
+      setSearchParams(nextParams);
+    };
 
   const handleSubmit = e => {
     e.preventDefault();
-    setSearch(e.currentTarget.elements.searchbar.value);
+      setSearch(e.currentTarget.elements.searchbar.value);
+      updateQueryString(e.currentTarget.elements.searchbar.value);
   };
 
   return (

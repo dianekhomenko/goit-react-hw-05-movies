@@ -10,7 +10,7 @@ const calculateUserScore = rating => {
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState('');
+  const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     async function getData() {
