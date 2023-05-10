@@ -4,9 +4,8 @@ import { useLocation } from 'react-router-dom';
 
 export const Movie = () => {
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
-  console.log(location.state);
-  
+  const backLinkHref = location.state.from ?? '/movies';
+
   return (
     <>
       <Link to={backLinkHref}>Back</Link>
