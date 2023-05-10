@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { getMovieById } from 'api/api';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Details, AdditionalLinks } from './MovieDetails.styled';
@@ -28,12 +28,13 @@ export const MovieDetails = () => {
       <h1>{movie.title}</h1>
       <Details>
         <div>
-          {movie.poster_path && <img
-            src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`}
-            alt={movie.title}
-            height="400"
-          />
-          }
+          {movie.poster_path && (
+            <img
+              src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`}
+              alt={movie.title}
+              height="400"
+            />
+          )}
         </div>
         <div>
           <p>User score: {userScore}%</p>
@@ -57,7 +58,9 @@ export const MovieDetails = () => {
             Reviews
           </Link>
         </AdditionalLinks>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   );
