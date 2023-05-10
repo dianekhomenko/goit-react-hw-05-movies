@@ -47,7 +47,7 @@ export const MovieSearch = () => {
       <ul>
         {movies.map(movie => (
           <Link
-            to={`/movies/${movie.id}`}
+            to={`/goit-react-hw-05-movies/movies/${movie.id}`}
             key={movie.id}
             state={{ from: location }}
           >
