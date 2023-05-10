@@ -9,6 +9,8 @@ export const MovieSearch = () => {
   const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState('');
     const [searchParams, setSearchParams] = useSearchParams();
+    const searchText = searchParams.get('query') ?? '';
+
 
   useEffect(() => {
     async function getData() {
@@ -37,7 +39,11 @@ export const MovieSearch = () => {
         <input name="searchbar" />
         <button type="submit">Search</button>
       </form>
-
+      {searchText && (
+        <p>
+          You searched for <b>{searchText}</b>
+        </p>
+      )}
       <ul>
         {movies.map(movie => (
           <Link to={`/movies/${movie.id}`} key={movie.id}>
