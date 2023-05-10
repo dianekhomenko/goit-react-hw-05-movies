@@ -13,14 +13,15 @@ export const Reviews = () => {
     }
     getData();
   }, [movieId]);
+
   return (
     <ul>
-      {reviews.map(review => (
+      {(reviews.length !==0) ? reviews.map(review => (
         <li key={review.id}>
           <h5>{review.author}</h5>
           <p>{review.content}</p>
         </li>
-      ))}
+      )) : 'There is no reviews'}
     </ul>
   );
 };
