@@ -7,7 +7,6 @@ import { useSearchParams, useLocation } from 'react-router-dom';
 
 export const MovieSearch = () => {
   const [movies, setMovies] = useState([]);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const searchText = searchParams.get('query') ?? '';
   const [search, setSearch] = useState(searchText);
