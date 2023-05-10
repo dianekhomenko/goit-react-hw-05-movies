@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'api/api';
 import { useEffect, useState } from 'react';
+import { CastBlock, CastMember } from './MovieDetails.styled';
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -15,9 +16,9 @@ export const Cast = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <CastBlock>
       {cast.map(member => (
-        <li key={member.id}>
+        <CastMember key={member.id}>
           {member.profile_path ? (
             <img
               src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${member.profile_path}`}
@@ -29,8 +30,8 @@ export const Cast = () => {
           )}
           <h5>{member.name}</h5>
           <p>Character: {member.character}</p>
-        </li>
+        </CastMember>
       ))}
-    </ul>
+    </CastBlock>
   );
 };
