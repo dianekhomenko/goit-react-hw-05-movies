@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieById } from 'api/api';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Details, AdditionalLinks } from './MovieDetails.styled';
 
 const calculateUserScore = rating => {
@@ -11,6 +11,7 @@ const calculateUserScore = rating => {
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     async function getData() {
@@ -48,8 +49,12 @@ export const MovieDetails = () => {
       <div>
         <h4>Additional information</h4>
         <AdditionalLinks>
-          <Link to="cast">Cast</Link>
-          <Link to="reviews">Reviews</Link>
+          <Link to="cast" state={{ from: location.state.from }}>
+            Cast
+          </Link>
+          <Link to="reviews" state={{ from: location.state.from }}>
+            Reviews
+          </Link>
         </AdditionalLinks>
         <Outlet />
       </div>

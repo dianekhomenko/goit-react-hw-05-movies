@@ -5,13 +5,11 @@ import { MovieListItem } from 'components/MovieListItem/MovieListItem';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-
 axios.defaults.baseURL = `https://api.themoviedb.org/3/`;
 
 export const MovieList = () => {
   const [movies, setMovies] = useState([]);
-    const location = useLocation();
-
+  const location = useLocation();
 
   useEffect(() => {
     async function getData() {
