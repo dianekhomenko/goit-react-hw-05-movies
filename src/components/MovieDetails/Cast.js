@@ -17,7 +17,7 @@ export const Cast = () => {
 
   return (
     <CastBlock>
-      {cast.map(member => (
+      {(cast.length !==0) ? cast.map(member => (
         <CastMember key={member.id}>
           {member.profile_path ? (
             <img
@@ -31,7 +31,7 @@ export const Cast = () => {
           <h5>{member.name}</h5>
           <p>Character: {member.character}</p>
         </CastMember>
-      ))}
+      )) : 'No info about cast'}
     </CastBlock>
   );
 };
