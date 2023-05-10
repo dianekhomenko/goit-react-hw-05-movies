@@ -1,9 +1,11 @@
-import {MovieSearch} from 'components/MovieSearch/MovieSearch'
+import { MovieSearch } from 'components/MovieSearch/MovieSearch';
 
-export const Movies = () => {
+const Movies = () => {
   return (
     <>
       <MovieSearch />
     </>
   );
 };
+
+export default Movies;

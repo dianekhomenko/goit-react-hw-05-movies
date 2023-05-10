@@ -1,5 +1,7 @@
 import { MovieList } from 'components/MovieList/MovieList';
 
-export const Home = () => {
+const Home = () => {
   return <MovieList />;
 };
+
+export default Home;

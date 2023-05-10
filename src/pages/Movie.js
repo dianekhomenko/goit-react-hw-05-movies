@@ -2,7 +2,7 @@ import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-export const Movie = () => {
+const Movie = () => {
   const location = useLocation();
   const backLinkHref = location.state.from ?? '/movies';
 
@@ -13,3 +13,5 @@ export const Movie = () => {
     </>
   );
 };
+
+export default Movie;

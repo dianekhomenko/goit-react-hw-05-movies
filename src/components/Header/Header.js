@@ -1,7 +1,7 @@
-import { Navigation } from './Header.styled'
-import {HeaderLink} from './Header.styled'
+import { Navigation } from './Header.styled';
+import { HeaderLink } from './Header.styled';
 
-export const Header = () => {
+const Header = () => {
   return (
     <Navigation>
       <HeaderLink to="/">Home</HeaderLink>
@@ -9,3 +9,5 @@ export const Header = () => {
     </Navigation>
   );
 };
+
+export default Header;

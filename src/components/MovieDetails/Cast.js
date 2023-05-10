@@ -3,7 +3,7 @@ import { getMovieCast } from 'api/api';
 import { useEffect, useState } from 'react';
 import { CastBlock, CastMember } from './MovieDetails.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
 
@@ -17,21 +17,25 @@ export const Cast = () => {
 
   return (
     <CastBlock>
-      {(cast.length !==0) ? cast.map(member => (
-        <CastMember key={member.id}>
-          {member.profile_path ? (
-            <img
-              src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${member.profile_path}`}
-              alt={member.name}
-              height="150"
-            />
-          ) : (
-            ''
-          )}
-          <h5>{member.name}</h5>
-          <p>Character: {member.character}</p>
-        </CastMember>
-      )) : 'No info about cast'}
+      {cast.length !== 0
+        ? cast.map(member => (
+            <CastMember key={member.id}>
+              {member.profile_path ? (
+                <img
+                  src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${member.profile_path}`}
+                  alt={member.name}
+                  height="150"
+                />
+              ) : (
+                ''
+              )}
+              <h5>{member.name}</h5>
+              <p>Character: {member.character}</p>
+            </CastMember>
+          ))
+        : 'No info about cast'}
     </CastBlock>
   );
 };
+
+export default Cast;
