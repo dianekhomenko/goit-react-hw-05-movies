@@ -28,11 +28,12 @@ export const MovieDetails = () => {
       <h1>{movie.title}</h1>
       <Details>
         <div>
-          <img
+          {movie.poster_path && <img
             src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`}
             alt={movie.title}
             height="400"
           />
+          }
         </div>
         <div>
           <p>User score: {userScore}%</p>
