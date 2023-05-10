@@ -8,7 +8,7 @@ const Movie = () => {
 
   return (
     <>
-      <Link to={backLinkHref}>Back</Link>
+      <Link to={backLinkHref}>← Back</Link>
       <MovieDetails />
     </>
   );
