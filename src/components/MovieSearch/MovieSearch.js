@@ -5,21 +5,24 @@ import { MovieListItem } from 'components/MovieListItem/MovieListItem';
 import { Link } from 'react-router-dom';
 import { useSearchParams, useLocation } from 'react-router-dom';
 
+axios.defaults.baseURL = `https://api.themoviedb.org/3/`;
+
 export const MovieSearch = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchText = searchParams.get('query') ?? '';
-  const [search, setSearch] = useState(searchText);
 
   useEffect(() => {
-    async function getData() {
-      const response = await axios.get(
-        `/search/movie?api_key=${API_KEY}&query=${search}`
-      );
-      setMovies(response.data.results);
+    if (searchText !== '') {
+      async function getData() {
+        const response = await axios.get(
+          `/search/movie?api_key=${API_KEY}&query=${searchText}`
+        );
+        setMovies(response.data.results);
+      }
+      getData();
     }
-    getData();
-  }, [search]);
+  }, [searchText]);
 
   const updateQueryString = query => {
     const nextParams = query !== '' ? { query } : {};
@@ -28,7 +31,6 @@ export const MovieSearch = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setSearch(e.currentTarget.elements.searchbar.value);
     updateQueryString(e.currentTarget.elements.searchbar.value);
   };
   const location = useLocation();
