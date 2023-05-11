@@ -51,10 +51,16 @@ export const MovieDetails = () => {
       <div>
         <h4>Additional information</h4>
         <AdditionalLinks>
-          <Link to="cast" state={{ from: location.state.from }}>
+          <Link
+            to="cast"
+            state={location.state ? { from: location.state.from } : '/movies'}
+          >
             Cast
           </Link>
-          <Link to="reviews" state={{ from: location.state.from }}>
+          <Link
+            to="reviews"
+            state={location.state ? { from: location.state.from } : '/movies'}
+          >
             Reviews
           </Link>
         </AdditionalLinks>
